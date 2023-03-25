@@ -93,7 +93,7 @@ export function CSQuests(): Quest[] {
         {
           name: "Run",
           completed: () => get("csServicesPerformed").split(",").length >= 11 && canInteract(),
-          do: () => cliExecute("instantsccs-dev"),
+          do: () => cliExecute("instantsccs"),
           clear: "all",
           tracking: "Run",
         },
