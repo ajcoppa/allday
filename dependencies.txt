@@ -1,3 +1,4 @@
+github Pantocyclus/InstantSCCS release
 github Loathing-Associates-Scripting-Society/garbage-collector release
 https://github.com/soolar/CONSUME.ash/trunk/RELEASE/
 github Loathing-Associates-Scripting-Society/UberPvPOptimizer
