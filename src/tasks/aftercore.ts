@@ -86,15 +86,12 @@ export function AftercoreQuest(): Quest {
       },
       {
         name: "SIT Course",
-        // eslint-disable-next-line libram/verify-constants
         ready: () => have($item`S.I.T. Course Completion Certificate`),
         completed: () => get("_sitCourseCompleted", false),
         choices: {
           1494: 2,
         },
-        do: () =>
-          // eslint-disable-next-line libram/verify-constants
-          use($item`S.I.T. Course Completion Certificate`),
+        do: () => use($item`S.I.T. Course Completion Certificate`),
       },
       {
         name: "LGR Seed",
