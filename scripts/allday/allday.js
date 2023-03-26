@@ -6975,7 +6975,7 @@ function CSQuests() {
       },
       do: function() {
         var targetAdvs = 100 - (0, import_kolmafia19.numericModifier)("adventures");
-        (0, import_kolmafia19.print)("goorbo completed, but did not overdrink.", "red"), targetAdvs < (0, import_kolmafia19.myAdventures)() && targetAdvs > 0 ? (0, import_kolmafia19.print)("Rerun with fewer than ".concat(targetAdvs, " adventures for goorbo to handle your diet"), "red") : (0, import_kolmafia19.print)("Something went wrong.", "red");
+        (0, import_kolmafia19.print)("allday completed, but did not overdrink.", "red"), targetAdvs < (0, import_kolmafia19.myAdventures)() && targetAdvs > 0 ? (0, import_kolmafia19.print)("Rerun with fewer than ".concat(targetAdvs, " adventures for allday to handle your diet"), "red") : (0, import_kolmafia19.print)("Something went wrong.", "red");
       }
     }]
   }];
