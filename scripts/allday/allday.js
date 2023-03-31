@@ -6755,14 +6755,6 @@ function CSQuests() {
         return (0, import_kolmafia19.use)($item(_templateObject320 || (_templateObject320 = _taggedTemplateLiteral11(["S.I.T. Course Completion Certificate"]))));
       }
     }, {
-      name: "Break Stone",
-      completed: function() {
-        return (0, import_kolmafia19.hippyStoneBroken)() || !args.pvp;
-      },
-      do: function() {
-        (0, import_kolmafia19.visitUrl)("peevpee.php?action=smashstone&pwd&confirm=on", !0), (0, import_kolmafia19.visitUrl)("peevpee.php?place=fight");
-      }
-    }, {
       name: "Stillsuit Prep",
       completed: function() {
         return (0, import_kolmafia19.itemAmount)($item(_templateObject419 || (_templateObject419 = _taggedTemplateLiteral11(["tiny stillsuit"])))) === 0;
@@ -6839,6 +6831,14 @@ function CSQuests() {
         return (0, import_kolmafia19.buy)($coinmaster(_templateObject137 || (_templateObject137 = _taggedTemplateLiteral11(["The Dinsey Company Store"]))), 1, $item(_templateObject147 || (_templateObject147 = _taggedTemplateLiteral11(["one-day ticket to Dinseylandfill"]))));
       },
       tracking: "Garbo"
+    }, {
+      name: "Break Stone",
+      completed: function() {
+        return (0, import_kolmafia19.hippyStoneBroken)() || !args.pvp;
+      },
+      do: function() {
+        (0, import_kolmafia19.visitUrl)("peevpee.php?action=smashstone&pwd&confirm=on", !0), (0, import_kolmafia19.visitUrl)("peevpee.php?place=fight");
+      }
     }, {
       name: "PvP",
       ready: function() {
