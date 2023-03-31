@@ -68,14 +68,6 @@ export function CSQuests(): Quest[] {
           do: () => use($item`S.I.T. Course Completion Certificate`),
         },
         {
-          name: "Break Stone",
-          completed: () => hippyStoneBroken() || !args.pvp,
-          do: (): void => {
-            visitUrl("peevpee.php?action=smashstone&pwd&confirm=on", true);
-            visitUrl("peevpee.php?place=fight");
-          },
-        },
-        {
           name: "Stillsuit Prep",
           completed: () => itemAmount($item`tiny stillsuit`) === 0,
           do: () =>
@@ -135,6 +127,14 @@ export function CSQuests(): Quest[] {
           do: () =>
             buy($coinmaster`The Dinsey Company Store`, 1, $item`one-day ticket to Dinseylandfill`),
           tracking: "Garbo",
+        },
+        {
+          name: "Break Stone",
+          completed: () => hippyStoneBroken() || !args.pvp,
+          do: (): void => {
+            visitUrl("peevpee.php?action=smashstone&pwd&confirm=on", true);
+            visitUrl("peevpee.php?place=fight");
+          },
         },
         {
           name: "PvP",
