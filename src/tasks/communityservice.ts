@@ -2,7 +2,6 @@ import { CombatStrategy, step } from "grimoire-kolmafia";
 import {
   availableAmount,
   buy,
-  canInteract,
   cliExecute,
   equip,
   haveEquipped,
@@ -92,7 +91,7 @@ export function CSQuests(): Quest[] {
         },
         {
           name: "Run",
-          completed: () => get("csServicesPerformed").split(",").length >= 11 && canInteract(),
+          completed: () => get("kingLiberated"),
           do: () => cliExecute("instantsccs"),
           clear: "all",
           tracking: "Run",
