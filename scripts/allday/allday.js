@@ -6775,7 +6775,7 @@ function CSQuests() {
     }, {
       name: "Run",
       completed: function() {
-        return get("csServicesPerformed").split(",").length >= 11 && (0, import_kolmafia19.canInteract)();
+        return get("kingLiberated");
       },
       do: function() {
         return (0, import_kolmafia19.cliExecute)("instantsccs");
