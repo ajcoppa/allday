@@ -3,6 +3,7 @@ import {
   availableAmount,
   buy,
   cliExecute,
+  create,
   equip,
   haveEquipped,
   hippyStoneBroken,
@@ -106,6 +107,11 @@ export function CSQuests(): Quest[] {
           name: "Breakfast",
           completed: () => get("breakfastCompleted"),
           do: () => cliExecute("breakfast"),
+        },
+        {
+          name: "Beach Access",
+          completed: () => have($item`bitchin' meatcar`),
+          do: () => create($item`bitchin' meatcar`),
         },
         {
           name: "Garbo",
