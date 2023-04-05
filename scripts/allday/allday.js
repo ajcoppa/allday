@@ -5911,6 +5911,10 @@ var args = Args.create("allday", "Written by zincaito (#2125208), heavily inspir
   pvp: Args.flag({
     help: "If true, break hippy stone and do pvp.",
     default: !1
+  }),
+  csscript: Args.string({
+    help: "The command that will perform the Community Service run. Include arguments you'd like to pass to that script too.",
+    default: "instantsccs"
   })
 });
 
@@ -6473,7 +6477,7 @@ function totallyDrunk() {
 function doneAdventuring() {
   return !canDiet() && (0, import_kolmafia17.myAdventures)() === 0 || stooperDrunk();
 }
-var gardens2 = $items(_templateObject116 || (_templateObject116 = _taggedTemplateLiteral9(["packet of pumpkin seeds, Peppermint Pip Packet, packet of dragon's teeth, packet of beer seeds, packet of winter seeds, packet of thanksgarden seeds, packet of tall grass seeds, packet of mushroom spores"])));
+var gardens2 = $items(_templateObject116 || (_templateObject116 = _taggedTemplateLiteral9(["packet of pumpkin seeds, Peppermint Pip Packet, packet of dragon's teeth, packet of beer seeds, packet of winter seeds, packet of thanksgarden seeds, packet of tall grass seeds, packet of mushroom spores, packet of rock seeds"])));
 function getGarden() {
   return gardens2.find(function(it) {
     return it.name in (0, import_kolmafia17.getCampground)();
@@ -6770,7 +6774,7 @@ function CSQuests() {
         return get("kingLiberated");
       },
       do: function() {
-        return (0, import_kolmafia19.cliExecute)("instantsccs");
+        return (0, import_kolmafia19.cliExecute)(args.csscript);
       },
       clear: "all",
       tracking: "Run"
