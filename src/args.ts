@@ -24,5 +24,9 @@ export const args = Args.create(
       help: "If true, break hippy stone and do pvp.",
       default: false,
     }),
+    csscript: Args.string({
+      help: "The command that will perform the Community Service run. Include arguments you'd like to pass to that script too.",
+      default: "instantsccs",
+    }),
   }
 );
