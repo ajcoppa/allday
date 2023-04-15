@@ -308,9 +308,11 @@ function numberWithCommas(x: number): string {
 function printProfitSegment(key: string, record: ProfitRecord, color: string) {
   if (record === undefined) return;
   print(
-    `${key}: ${numberWithCommas(record.meat)} meat + ${numberWithCommas(record.items)} items (${
-      record.turns
-    } turns + ${numberWithCommas(record.hours)} hours)`,
+    `${key}: ${numberWithCommas(record.meat + record.items)} total - ${numberWithCommas(
+      record.meat
+    )} meat + ${numberWithCommas(record.items)} items (${record.turns} turns + ${numberWithCommas(
+      record.hours
+    )} hours)`,
     color
   );
 }
@@ -337,7 +339,7 @@ export function printProfits(records: Records): void {
   }
 
   printProfitSegment(
-    "Total",
+    "Combined",
     sum(records, () => true),
     "black"
   );
