@@ -6252,7 +6252,7 @@ function numberWithCommas(x) {
   return str.includes(".") ? x.toFixed(2) : str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 function printProfitSegment(key, record, color) {
-  record !== void 0 && (0, import_kolmafia15.print)("".concat(key, ": ").concat(numberWithCommas(record.meat), " meat + ").concat(numberWithCommas(record.items), " items (").concat(record.turns, " turns + ").concat(numberWithCommas(record.hours), " hours)"), color);
+  record !== void 0 && (0, import_kolmafia15.print)("".concat(key, ": ").concat(numberWithCommas(record.meat + record.items), " total - ").concat(numberWithCommas(record.meat), " meat + ").concat(numberWithCommas(record.items), " items (").concat(record.turns, " turns + ").concat(numberWithCommas(record.hours), " hours)"), color);
 }
 function printProfits(records) {
   (0, import_kolmafia15.print)(""), (0, import_kolmafia15.print)("== Daily Loop Profit =="), printProfitSegment("Aftercore", sum2(records, function(key) {
@@ -6265,7 +6265,7 @@ function printProfits(records) {
   }), "blue");
   for (var _key5 in records)
     _key5.startsWith("1") && printProfitSegment("* ".concat(_key5.substring(2)), records[_key5], "green");
-  printProfitSegment("Total", sum2(records, function() {
+  printProfitSegment("Combined", sum2(records, function() {
     return !0;
   }), "black");
 }
