@@ -6712,6 +6712,14 @@ function AftercoreQuest() {
         });
       }
     }, {
+      name: "Visit Council",
+      completed: function() {
+        return get("_alldayCouncilVisited", !1);
+      },
+      do: function() {
+        (0, import_kolmafia18.visitUrl)("council.php"), _set("_alldayCouncilVisited", !0);
+      }
+    }, {
       name: "Ascend CS",
       completed: function() {
         return getCurrentLeg() >= Leg.CommunityService;
