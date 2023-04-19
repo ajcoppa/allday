@@ -250,6 +250,14 @@ export function AftercoreQuest(): Quest {
         },
       },
       {
+        name: "Visit Council",
+        completed: () => get("_alldayCouncilVisited", false),
+        do: (): void => {
+          visitUrl("council.php");
+          set("_alldayCouncilVisited", true);
+        },
+      },
+      {
         name: "Ascend CS",
         completed: () => getCurrentLeg() >= Leg.CommunityService,
         do: (): void => {
