@@ -118,7 +118,7 @@ export function CSQuests(): Quest[] {
           ready: () => get("_stenchAirportToday") || get("stenchAirportAlways"),
           completed: () => (myAdventures() === 0 && !canDiet()) || stooperDrunk(),
           prepare: () => uneffect($effect`Beaten Up`),
-          do: () => cliExecute("garbo workshed=cmc"),
+          do: () => cliExecute(args.garbocs),
           post: () =>
             $effects`Power Ballad of the Arrowsmith, Stevedave's Shanty of Superiority, The Moxious Madrigal, The Magical Mojomuscular Melody, Aloysius' Antiphon of Aptitude, Ur-Kel's Aria of Annoyance`
               .filter((ef) => have(ef))

@@ -124,7 +124,7 @@ export function AftercoreQuest(): Quest {
         completed: () => stooperDrunk() || (!canDiet() && myAdventures() === 0),
         prepare: () => uneffect($effect`Beaten Up`),
         do: () => {
-          cliExecute(`garbo ascend workshed=train`);
+          cliExecute(args.garboaftercore);
         },
         post: () => {
           if (myAdventures() === 0)

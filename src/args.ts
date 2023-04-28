@@ -28,5 +28,13 @@ export const args = Args.create(
       help: "The command that will perform the Community Service run. Include arguments you'd like to pass to that script too.",
       default: "instantsccs",
     }),
+    garboaftercore: Args.string({
+      help: "The farming command that allday will run in aftercore, including all arguments",
+      default: "garbo ascend workshed=train",
+    }),
+    garbocs: Args.string({
+      help: "The farming command that allday will run immediately after completing the CS run, including all arguments",
+      default: "garbo workshed=cmc",
+    }),
   }
 );
