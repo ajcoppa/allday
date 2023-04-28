@@ -5915,6 +5915,14 @@ var args = Args.create("allday", "Written by zincaito (#2125208), heavily inspir
   csscript: Args.string({
     help: "The command that will perform the Community Service run. Include arguments you'd like to pass to that script too.",
     default: "instantsccs"
+  }),
+  garboaftercore: Args.string({
+    help: "The farming command that allday will run in aftercore, including all arguments",
+    default: "garbo ascend workshed=train"
+  }),
+  garbocs: Args.string({
+    help: "The farming command that allday will run immediately after completing the CS run, including all arguments",
+    default: "garbo workshed=cmc"
   })
 });
 
@@ -6585,7 +6593,7 @@ function AftercoreQuest() {
         return uneffect($effect(_templateObject127 || (_templateObject127 = _taggedTemplateLiteral10(["Beaten Up"]))));
       },
       do: function() {
-        (0, import_kolmafia18.cliExecute)("garbo ascend workshed=train");
+        (0, import_kolmafia18.cliExecute)(args.garboaftercore);
       },
       post: function() {
         (0, import_kolmafia18.myAdventures)() === 0 && $effects(_templateObject136 || (_templateObject136 = _taggedTemplateLiteral10(["Power Ballad of the Arrowsmith, Stevedave's Shanty of Superiority, The Moxious Madrigal, The Magical Mojomuscular Melody, Aloysius' Antiphon of Aptitude, Ur-Kel's Aria of Annoyance"]))).filter(function(ef) {
@@ -6828,7 +6836,7 @@ function CSQuests() {
         return uneffect($effect(_templateObject118 || (_templateObject118 = _taggedTemplateLiteral11(["Beaten Up"]))));
       },
       do: function() {
-        return (0, import_kolmafia19.cliExecute)("garbo workshed=cmc");
+        return (0, import_kolmafia19.cliExecute)(args.garbocs);
       },
       post: function() {
         return $effects(_templateObject128 || (_templateObject128 = _taggedTemplateLiteral11(["Power Ballad of the Arrowsmith, Stevedave's Shanty of Superiority, The Moxious Madrigal, The Magical Mojomuscular Melody, Aloysius' Antiphon of Aptitude, Ur-Kel's Aria of Annoyance"]))).filter(function(ef) {
