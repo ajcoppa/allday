@@ -133,7 +133,7 @@ export function AftercoreQuest(): Quest {
         name: "Cincho Party Time",
         completed: () =>
           !have($item`Cincho de Mayo`) ||
-          (get("timesRested", 0) === totalFreeRests() && get("_cinchUsed", 0) === 100),
+          (get("timesRested", 0) === totalFreeRests() && get("_cinchUsed", 0) > 75),
         do: () => {
           equip($item`Cincho de Mayo`);
           let remainingCinch = 100 - get("_cinchUsed", 0);
