@@ -10,6 +10,7 @@ import {
   myInebriety,
   mySpleenUse,
   spleenLimit,
+  totalFreeRests,
 } from "kolmafia";
 import { $familiar, $item, $items, get, have } from "libram";
 
@@ -58,4 +59,12 @@ export function doneAdventuring(): boolean {
 const gardens = $items`packet of pumpkin seeds, Peppermint Pip Packet, packet of dragon's teeth, packet of beer seeds, packet of winter seeds, packet of thanksgarden seeds, packet of tall grass seeds, packet of mushroom spores, packet of rock seeds`;
 export function getGarden(): Item {
   return gardens.find((it) => it.name in getCampground()) || $item`none`;
+}
+
+export function nextRestWouldOvercapCinch(): boolean {
+  const remainingCinch = 100 - get("_cinchUsed", 0);
+  const timesRested = get("timesRested", 0);
+  const cinchLevels: number[] = [30, 30, 30, 30, 30, 25, 20, 15, 10, 5];
+  const nextCinchRestored = timesRested < cinchLevels.length ? cinchLevels[timesRested] : 5;
+  return remainingCinch + nextCinchRestored > 100;
 }

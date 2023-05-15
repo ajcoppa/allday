@@ -4,6 +4,7 @@ import {
   buy,
   cliExecute,
   create,
+  equip,
   getCampground,
   getClanName,
   guildStoreAvailable,
@@ -20,8 +21,10 @@ import {
   pvpAttacksLeft,
   restoreHp,
   restoreMp,
+  totalFreeRests,
   use,
   useFamiliar,
+  useSkill,
   visitUrl,
 } from "kolmafia";
 import {
@@ -49,7 +52,14 @@ import {
 import { args } from "../args";
 
 import { getCurrentLeg, Leg, Quest } from "./structure";
-import { canDiet, getGarden, maxBase, stooperDrunk, totallyDrunk } from "./utils";
+import {
+  canDiet,
+  getGarden,
+  maxBase,
+  nextRestWouldOvercapCinch,
+  stooperDrunk,
+  totallyDrunk,
+} from "./utils";
 
 export function AftercoreQuest(): Quest {
   return {
@@ -118,6 +128,28 @@ export function AftercoreQuest(): Quest {
           },
         ],
         do: () => false,
+      },
+      {
+        name: "Cincho Party Time",
+        completed: () =>
+          !have($item`Cincho de Mayo`) ||
+          (get("timesRested", 0) === totalFreeRests() && get("_cinchUsed", 0) === 100),
+        do: () => {
+          equip($item`Cincho de Mayo`);
+          let remainingCinch = 100 - get("_cinchUsed", 0);
+          let remainingFreeRests = totalFreeRests() - get("timesRested", 0);
+          while (remainingCinch >= 25 || remainingFreeRests > 0) {
+            while (remainingCinch >= 25) {
+              useSkill($skill`Cincho: Party Soundtrack`);
+              remainingCinch -= 25;
+            }
+
+            while (remainingFreeRests > 0 && !nextRestWouldOvercapCinch()) {
+              visitUrl("campground.php?action=rest");
+              remainingFreeRests--;
+            }
+          }
+        },
       },
       {
         name: "Garbo",
