@@ -6591,7 +6591,7 @@ function AftercoreQuest() {
     }, {
       name: "Cincho Party Time",
       completed: function() {
-        return !have($item(_templateObject127 || (_templateObject127 = _taggedTemplateLiteral10(["Cincho de Mayo"])))) || get("timesRested", 0) === (0, import_kolmafia18.totalFreeRests)() && get("_cinchUsed", 0) === 100;
+        return !have($item(_templateObject127 || (_templateObject127 = _taggedTemplateLiteral10(["Cincho de Mayo"])))) || get("timesRested", 0) === (0, import_kolmafia18.totalFreeRests)() && get("_cinchUsed", 0) > 75;
       },
       do: function() {
         (0, import_kolmafia18.equip)($item(_templateObject136 || (_templateObject136 = _taggedTemplateLiteral10(["Cincho de Mayo"]))));
