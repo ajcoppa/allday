@@ -1,4 +1,5 @@
 import {
+  equip,
   fullnessLimit,
   getCampground,
   inebrietyLimit,
@@ -11,8 +12,10 @@ import {
   mySpleenUse,
   spleenLimit,
   totalFreeRests,
+  useSkill,
+  visitUrl,
 } from "kolmafia";
-import { $familiar, $item, $items, get, have } from "libram";
+import { $familiar, $item, $items, $skill, get, have } from "libram";
 
 import { garboValue } from "../engine/profits";
 
@@ -67,4 +70,22 @@ export function nextRestWouldOvercapCinch(): boolean {
   const cinchLevels: number[] = [30, 30, 30, 30, 30, 25, 20, 15, 10, 5];
   const nextCinchRestored = timesRested < cinchLevels.length ? cinchLevels[timesRested] : 5;
   return remainingCinch + nextCinchRestored > 100;
+}
+
+export function useAllCinchOnPartySoundtrack(): void {
+  equip($item`Cincho de Mayo`);
+  let remainingCinch = 100 - get("_cinchUsed", 0);
+  let remainingFreeRests = totalFreeRests() - get("timesRested", 0);
+  while (remainingCinch >= 25 || remainingFreeRests > 0) {
+    while (remainingCinch >= 25) {
+      useSkill($skill`Cincho: Party Soundtrack`);
+      remainingCinch = 100 - get("_cinchUsed", 0);
+    }
+
+    while (remainingFreeRests > 0 && !nextRestWouldOvercapCinch()) {
+      visitUrl("campground.php?action=rest");
+      remainingFreeRests = totalFreeRests() - get("timesRested", 0);
+      remainingCinch = 100 - get("_cinchUsed", 0);
+    }
+  }
 }

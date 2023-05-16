@@ -18,6 +18,7 @@ import {
   pvpAttacksLeft,
   restoreHp,
   restoreMp,
+  totalFreeRests,
   use,
   useFamiliar,
   visitUrl,
@@ -42,7 +43,14 @@ import {
 import { args } from "../args";
 
 import { getCurrentLeg, Leg, Quest } from "./structure";
-import { canDiet, doneAdventuring, maxBase, stooperDrunk, totallyDrunk } from "./utils";
+import {
+  canDiet,
+  doneAdventuring,
+  maxBase,
+  stooperDrunk,
+  totallyDrunk,
+  useAllCinchOnPartySoundtrack,
+} from "./utils";
 
 export function CSQuests(): Quest[] {
   return [
@@ -112,6 +120,16 @@ export function CSQuests(): Quest[] {
           name: "Beach Access",
           completed: () => have($item`bitchin' meatcar`),
           do: () => create($item`bitchin' meatcar`),
+        },
+        {
+          name: "Cincho Party Time",
+          completed: () =>
+            !have($item`Cincho de Mayo`) ||
+            (get("timesRested", 0) === totalFreeRests() && get("_cinchUsed", 0) > 75),
+          do: () => {
+            useAllCinchOnPartySoundtrack();
+          },
+          limit: { tries: 3 },
         },
         {
           name: "Garbo",

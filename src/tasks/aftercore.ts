@@ -24,7 +24,6 @@ import {
   totalFreeRests,
   use,
   useFamiliar,
-  useSkill,
   visitUrl,
 } from "kolmafia";
 import {
@@ -56,9 +55,9 @@ import {
   canDiet,
   getGarden,
   maxBase,
-  nextRestWouldOvercapCinch,
   stooperDrunk,
   totallyDrunk,
+  useAllCinchOnPartySoundtrack,
 } from "./utils";
 
 export function AftercoreQuest(): Quest {
@@ -135,21 +134,9 @@ export function AftercoreQuest(): Quest {
           !have($item`Cincho de Mayo`) ||
           (get("timesRested", 0) === totalFreeRests() && get("_cinchUsed", 0) > 75),
         do: () => {
-          equip($item`Cincho de Mayo`);
-          let remainingCinch = 100 - get("_cinchUsed", 0);
-          let remainingFreeRests = totalFreeRests() - get("timesRested", 0);
-          while (remainingCinch >= 25 || remainingFreeRests > 0) {
-            while (remainingCinch >= 25) {
-              useSkill($skill`Cincho: Party Soundtrack`);
-              remainingCinch -= 25;
-            }
-
-            while (remainingFreeRests > 0 && !nextRestWouldOvercapCinch()) {
-              visitUrl("campground.php?action=rest");
-              remainingFreeRests--;
-            }
-          }
+          useAllCinchOnPartySoundtrack();
         },
+        limit: { tries: 3 },
       },
       {
         name: "Garbo",
