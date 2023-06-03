@@ -5,17 +5,23 @@ import {
   inebrietyLimit,
   Item,
   mallPrice,
+  mpCost,
   myAdventures,
   myFamiliar,
   myFullness,
+  myHp,
   myInebriety,
+  myMaxhp,
+  myMaxmp,
+  myMp,
   mySpleenUse,
+  Skill,
   spleenLimit,
   totalFreeRests,
   useSkill,
   visitUrl,
 } from "kolmafia";
-import { $familiar, $item, $items, $skill, get, have } from "libram";
+import { $familiar, $item, $items, $skill, get, have, maxBy } from "libram";
 
 import { garboValue } from "../engine/profits";
 
@@ -72,6 +78,16 @@ export function nextRestWouldOvercapCinch(): boolean {
   return remainingCinch + nextCinchRestored > 100;
 }
 
+function burnMp(): void {
+  // Burn MP with cheapest available skill that uses MP
+  const bestSkill = maxBy(
+    Skill.all().filter((sk) => have(sk) && mpCost(sk) >= 1),
+    (sk) => -mpCost(sk)
+  );
+
+  useSkill(bestSkill);
+}
+
 export function useAllCinchOnPartySoundtrack(): void {
   equip($item`Cincho de Mayo`);
   let remainingCinch = 100 - get("_cinchUsed", 0);
@@ -83,6 +99,9 @@ export function useAllCinchOnPartySoundtrack(): void {
     }
 
     while (remainingFreeRests > 0 && !nextRestWouldOvercapCinch()) {
+      if (myHp() >= myMaxhp() && myMp() >= myMaxmp()) {
+        burnMp();
+      }
       visitUrl("campground.php?action=rest");
       remainingFreeRests = totalFreeRests() - get("timesRested", 0);
       remainingCinch = 100 - get("_cinchUsed", 0);

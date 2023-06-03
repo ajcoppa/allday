@@ -13,7 +13,7 @@
   "dependencies": {
     "grimoire-kolmafia": "^0.3.13",
     "kolmafia": "latest",
-    "libram": "^0.7.10"
+    "libram": "^0.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
