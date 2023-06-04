@@ -10,6 +10,7 @@ import {
   inebrietyLimit,
   itemAmount,
   myAdventures,
+  myAscensions,
   myInebriety,
   myMaxhp,
   mySign,
@@ -92,7 +93,7 @@ export function CSQuests(): Quest[] {
         },
         {
           name: "Run",
-          completed: () => get("kingLiberated"),
+          completed: () => get("lastEmptiedStorage") === myAscensions(),
           do: () => cliExecute(args.csscript),
           clear: "all",
           tracking: "Run",
