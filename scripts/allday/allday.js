@@ -5340,7 +5340,7 @@ function CSQuests() {
     }, {
       name: "Run",
       completed: function() {
-        return get("kingLiberated");
+        return get("lastEmptiedStorage") === (0, import_kolmafia18.myAscensions)();
       },
       do: function() {
         return (0, import_kolmafia18.cliExecute)(args.csscript);
