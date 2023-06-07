@@ -101,15 +101,6 @@ export function CSQuests(): Quest[] {
             ),
         },
         {
-          name: "Install Newbiesport Tent",
-          completed: () => getCampground()["Newbiesport™ Tent"] === 1,
-          do: () => {
-            if (have($item`Newbiesport™ Tent`)) {
-              use($item`Newbiesport™ Tent`);
-            }
-          },
-        },
-        {
           name: "Run",
           completed: () => get("lastEmptiedStorage") === myAscensions(),
           do: () => cliExecute(args.csscript),
