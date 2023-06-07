@@ -60,6 +60,14 @@ export function CSQuests(): Quest[] {
       completed: () => getCurrentLeg() !== Leg.CommunityService || step("questL13Final") > 11,
       tasks: [
         {
+          name: "Refresh All",
+          completed: () => get("_alldayRefreshed", false),
+          do: () => {
+            cliExecute("refresh all");
+            set("_alldayRefreshed", true);
+          },
+        },
+        {
           name: "Prep Fireworks Shop",
           completed: () =>
             !have($item`Clan VIP Lounge key`) || get("_alldayFireworksPrepped", false),
