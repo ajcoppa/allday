@@ -5,6 +5,7 @@ import {
   cliExecute,
   create,
   equip,
+  getCampground,
   haveEquipped,
   hippyStoneBroken,
   inebrietyLimit,
@@ -98,6 +99,15 @@ export function CSQuests(): Quest[] {
                 ) || $familiar`none`
               )
             ),
+        },
+        {
+          name: "Install Newbiesport Tent",
+          completed: () => getCampground()["Newbiesport™ Tent"] === 1,
+          do: () => {
+            if (have($item`Newbiesport™ Tent`)) {
+              use($item`Newbiesport™ Tent`);
+            }
+          },
         },
         {
           name: "Run",
