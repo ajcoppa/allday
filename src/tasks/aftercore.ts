@@ -295,9 +295,9 @@ export function AftercoreQuest(): Quest {
         do: (): void => {
           ascend(
             $path`Community Service`,
-            $class`Sauceror`,
+            $class`Seal Clubber`,
             Lifestyle.softcore,
-            "opossum",
+            "wombat",
             $item`astral six-pack`,
             $item`astral pet sweater`
           );
