@@ -21,7 +21,6 @@ import {
   pvpAttacksLeft,
   restoreHp,
   restoreMp,
-  totalFreeRests,
   use,
   useFamiliar,
   visitUrl,
@@ -57,7 +56,6 @@ import {
   maxBase,
   stooperDrunk,
   totallyDrunk,
-  useAllCinchOnPartySoundtrack,
 } from "./utils";
 
 export function AftercoreQuest(): Quest {
@@ -127,16 +125,6 @@ export function AftercoreQuest(): Quest {
           },
         ],
         do: () => false,
-      },
-      {
-        name: "Cincho Party Time",
-        completed: () =>
-          !have($item`Cincho de Mayo`) ||
-          (get("timesRested", 0) === totalFreeRests() && get("_cinchUsed", 0) > 75),
-        do: () => {
-          useAllCinchOnPartySoundtrack();
-        },
-        limit: { tries: 3 },
       },
       {
         name: "Garbo",
