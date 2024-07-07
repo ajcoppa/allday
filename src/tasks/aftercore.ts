@@ -230,6 +230,19 @@ export function AftercoreQuest(): Quest {
         limit: { tries: 30 },
       },
       {
+        name: "Garbo (Drunk)",
+        ready: () => have($item`Drunkula's wineglass`),
+        prepare: () => uneffect($effect`Beaten Up`),
+        completed: () => myAdventures() === 0,
+        do: () => cliExecute("garbo ascend"),
+        post: () =>
+          $effects`Power Ballad of the Arrowsmith, Stevedave's Shanty of Superiority, The Moxious Madrigal, The Magical Mojomuscular Melody, Aloysius' Antiphon of Aptitude, Ur-Kel's Aria of Annoyance`
+            .filter((ef) => have(ef))
+            .forEach((ef) => uneffect(ef)),
+        clear: "all",
+        tracking: "Garbo",
+      },
+      {
         name: "Turn in FunFunds",
         ready: () => get("_stenchAirportToday") && itemAmount($item`FunFunds™`) >= 20,
         completed: () => have($item`one-day ticket to Dinseylandfill`),
