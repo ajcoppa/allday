@@ -34,7 +34,7 @@ export const args = Args.create(
     }),
     garbocs: Args.string({
       help: "The farming command that allday will run immediately after completing the CS run, including all arguments",
-      default: "garbo workshed=cmc",
+      default: "garbo",
     }),
   }
 );
