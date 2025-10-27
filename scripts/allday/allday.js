@@ -4429,7 +4429,7 @@ var args = Args.create("allday", "Written by zincaito (#2125208), heavily inspir
   }),
   garbocs: Args.string({
     help: "The farming command that allday will run immediately after completing the CS run, including all arguments",
-    default: "garbo workshed=cmc"
+    default: "garbo"
   })
 });
 
@@ -5242,7 +5242,7 @@ function AftercoreQuest() {
         return (0, import_kolmafia17.pvpAttacksLeft)() === 0 || !(0, import_kolmafia17.hippyStoneBroken)();
       },
       do: function() {
-        (0, import_kolmafia17.cliExecute)("unequip"), (0, import_kolmafia17.cliExecute)("UberPvPOptimizer"), (0, import_kolmafia17.cliExecute)("swagger");
+        (0, import_kolmafia17.cliExecute)("unequip"), (0, import_kolmafia17.cliExecute)("PVP_MAB");
       }
     }, {
       name: "Get Pizzas + Ticket + Time",
