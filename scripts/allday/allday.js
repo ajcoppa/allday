@@ -5372,9 +5372,6 @@ function CSQuests() {
       }
     }, {
       name: "Garbo",
-      ready: function() {
-        return get("_stenchAirportToday") || get("stenchAirportAlways");
-      },
       completed: function() {
         return (0, import_kolmafia18.myAdventures)() === 0 && !canDiet() || stooperDrunk();
       },
