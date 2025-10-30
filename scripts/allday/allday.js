@@ -5419,7 +5419,7 @@ function CSQuests() {
         return (0, import_kolmafia18.pvpAttacksLeft)() === 0 || !(0, import_kolmafia18.hippyStoneBroken)();
       },
       do: function() {
-        (0, import_kolmafia18.cliExecute)("unequip"), (0, import_kolmafia18.cliExecute)("UberPvPOptimizer"), (0, import_kolmafia18.cliExecute)("swagger");
+        (0, import_kolmafia18.cliExecute)("unequip"), (0, import_kolmafia18.cliExecute)("PVP_MAB");
       }
     }, {
       name: "Stooper",
