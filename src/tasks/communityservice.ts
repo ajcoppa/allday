@@ -51,6 +51,46 @@ import {
   totallyDrunk,
 } from "./utils";
 
+const csPrefs = {
+  instant_freeFightPulls: 6451, // Great Wolf's Beastly Trousers
+  instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
+  instant_targetBaseMainStat: 170,
+  instant_saveAbstraction: true,
+  instant_saveAstralPilsners: 4,
+  instant_saveBeesKnees: true,
+  instant_saveBodySpradium: true,
+  instant_saveBorisBeer: true,
+  instant_saveCatalogCredits: 2,
+  instant_saveEuclideanAngle: true,
+  instant_saveHoneyBun: true,
+  instant_savePerfectFreeze: true,
+  instant_savePillkeeper: true,
+  instant_savePlainCalzone: true,
+  instant_saveRichRicotta: true,
+  instant_saveRicottaCasserole: true,
+  instant_saveRoastedVegetableItem: true,
+  instant_saveRoastedVegetableStats: true,
+  instant_saveSacramentoWine: true,
+  instant_saveSockdollager: true,
+  instant_saveWileyWheyBar: true,
+  instant_skipCabernetSauvignon: true,
+  instant_skipDistilledFortifiedWine: true,
+  instant_saveBackups: 10,
+  instant_saveLocketFactoryWorker: true,
+  instant_skipCyclopsEyedrops: true,
+  instant_skipEarlyTrainsetMeat: true,
+  instant_saveAprilingBandPiccolo: true,
+  instant_saveAprilingBandQuadTom: true,
+  instant_saveAprilingBandSaxophone: true,
+  instant_saveAprilingBandStaff: true,
+  instant_saveCinch: true,
+  instant_saveMimicEggs: true,
+  instant_saveMonsterHabitats: 3,
+  instant_saveStillsuit: true,
+  instant_skipHighHeels: true,
+  instant_skipMeatButler: true,
+};
+
 export function CSQuests(): Quest[] {
   return [
     {
@@ -97,6 +137,18 @@ export function CSQuests(): Quest[] {
               )
             ),
         },
+        {
+          // Ensures correct preferences are set in case they get overwritten
+          name: "Set CS Prefs",
+          completed: () => get("_alldayCSPrefsSet", false),
+          do: () => {
+            for (const prefName in csPrefs) {
+              const prefValue = csPrefs[prefName];
+              set(prefName, prefValue);
+            }
+            set("_alldayCSPrefsSet", true);
+          },
+        }
         {
           name: "Run",
           completed: () => get("lastEmptiedStorage") === myAscensions(),
