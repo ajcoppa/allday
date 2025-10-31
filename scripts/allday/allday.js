@@ -5284,6 +5284,45 @@ var _templateObject80, _templateObject221, _templateObject320, _templateObject41
 function _taggedTemplateLiteral10(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
+var csPrefs = {
+  instant_freeFightPulls: 6451,
+  instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
+  instant_targetBaseMainStat: 170,
+  instant_saveAbstraction: !0,
+  instant_saveAstralPilsners: 4,
+  instant_saveBeesKnees: !0,
+  instant_saveBodySpradium: !0,
+  instant_saveBorisBeer: !0,
+  instant_saveCatalogCredits: 2,
+  instant_saveEuclideanAngle: !0,
+  instant_saveHoneyBun: !0,
+  instant_savePerfectFreeze: !0,
+  instant_savePillkeeper: !0,
+  instant_savePlainCalzone: !0,
+  instant_saveRichRicotta: !0,
+  instant_saveRicottaCasserole: !0,
+  instant_saveRoastedVegetableItem: !0,
+  instant_saveRoastedVegetableStats: !0,
+  instant_saveSacramentoWine: !0,
+  instant_saveSockdollager: !0,
+  instant_saveWileyWheyBar: !0,
+  instant_skipCabernetSauvignon: !0,
+  instant_skipDistilledFortifiedWine: !0,
+  instant_saveBackups: 10,
+  instant_saveLocketFactoryWorker: !0,
+  instant_skipCyclopsEyedrops: !0,
+  instant_skipEarlyTrainsetMeat: !0,
+  instant_saveAprilingBandPiccolo: !0,
+  instant_saveAprilingBandQuadTom: !0,
+  instant_saveAprilingBandSaxophone: !0,
+  instant_saveAprilingBandStaff: !0,
+  instant_saveCinch: !0,
+  instant_saveMimicEggs: !0,
+  instant_saveMonsterHabitats: 3,
+  instant_saveStillsuit: !0,
+  instant_skipHighHeels: !0,
+  instant_skipMeatButler: !0
+};
 function CSQuests() {
   return [{
     name: "CS Run",
@@ -5329,6 +5368,18 @@ function CSQuests() {
         return (0, import_kolmafia18.equip)($item(_templateObject514 || (_templateObject514 = _taggedTemplateLiteral10(["tiny stillsuit"]))), get("stillsuitFamiliar", $familiars(_templateObject612 || (_templateObject612 = _taggedTemplateLiteral10(["Gelatinous Cubeling, Levitating Potato, Mosquito"]))).find(function(fam) {
           return have(fam);
         }) || $familiar(_templateObject710 || (_templateObject710 = _taggedTemplateLiteral10(["none"])))));
+      }
+    }, {
+      name: "Set CS Prefs",
+      completed: function() {
+        return get("_alldayCSPrefsSet", !1);
+      },
+      do: function() {
+        for (var prefName in csPrefs) {
+          var prefValue = csPrefs[prefName];
+          _set(prefName, prefValue);
+        }
+        _set("_alldayCSPrefsSet", !0);
       }
     }, {
       name: "Run",
