@@ -148,7 +148,7 @@ export function CSQuests(): Quest[] {
             }
             set("_alldayCSPrefsSet", true);
           },
-        }
+        },
         {
           name: "Run",
           completed: () => get("lastEmptiedStorage") === myAscensions(),
