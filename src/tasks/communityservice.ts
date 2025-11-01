@@ -185,6 +185,14 @@ export function CSQuests(): Quest[] {
           do: () => create($item`bitchin' meatcar`),
         },
         {
+          name: "Break Stone",
+          completed: () => hippyStoneBroken() || !args.pvp,
+          do: (): void => {
+            visitUrl("peevpee.php?action=smashstone&pwd&confirm=on", true);
+            visitUrl("peevpee.php?place=fight");
+          },
+        },
+        {
           name: "Garbo",
           completed: () => (myAdventures() === 0 && !canDiet()) || stooperDrunk(),
           prepare: () => uneffect($effect`Beaten Up`),
@@ -203,14 +211,6 @@ export function CSQuests(): Quest[] {
           do: () =>
             buy($coinmaster`The Dinsey Company Store`, 1, $item`one-day ticket to Dinseylandfill`),
           tracking: "Garbo",
-        },
-        {
-          name: "Break Stone",
-          completed: () => hippyStoneBroken() || !args.pvp,
-          do: (): void => {
-            visitUrl("peevpee.php?action=smashstone&pwd&confirm=on", true);
-            visitUrl("peevpee.php?place=fight");
-          },
         },
         {
           name: "PvP",
