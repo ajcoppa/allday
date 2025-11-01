@@ -52,6 +52,10 @@ import {
 } from "./utils";
 
 const csPrefs = {
+  // Ignore unnecessary leveling wishes:
+  // Effect 318: Fever from the flavor (9 cold res for mouthwash)
+  // Effect 2532: HGH-charged (+50% mus xp)
+  instant_explicitlyExcludedBuffs: "318,2532",
   instant_freeFightPulls: 6451, // Great Wolf's Beastly Trousers
   instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
   instant_targetBaseMainStat: 170,
