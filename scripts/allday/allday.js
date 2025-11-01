@@ -5423,6 +5423,14 @@ function CSQuests() {
         return (0, import_kolmafia18.create)($item(_templateObject108 || (_templateObject108 = _taggedTemplateLiteral10(["bitchin' meatcar"]))));
       }
     }, {
+      name: "Break Stone",
+      completed: function() {
+        return (0, import_kolmafia18.hippyStoneBroken)() || !args.pvp;
+      },
+      do: function() {
+        (0, import_kolmafia18.visitUrl)("peevpee.php?action=smashstone&pwd&confirm=on", !0), (0, import_kolmafia18.visitUrl)("peevpee.php?place=fight");
+      }
+    }, {
       name: "Garbo",
       completed: function() {
         return (0, import_kolmafia18.myAdventures)() === 0 && !canDiet() || stooperDrunk();
@@ -5454,14 +5462,6 @@ function CSQuests() {
         return (0, import_kolmafia18.buy)($coinmaster(_templateObject157 || (_templateObject157 = _taggedTemplateLiteral10(["The Dinsey Company Store"]))), 1, $item(_templateObject167 || (_templateObject167 = _taggedTemplateLiteral10(["one-day ticket to Dinseylandfill"]))));
       },
       tracking: "Garbo"
-    }, {
-      name: "Break Stone",
-      completed: function() {
-        return (0, import_kolmafia18.hippyStoneBroken)() || !args.pvp;
-      },
-      do: function() {
-        (0, import_kolmafia18.visitUrl)("peevpee.php?action=smashstone&pwd&confirm=on", !0), (0, import_kolmafia18.visitUrl)("peevpee.php?place=fight");
-      }
     }, {
       name: "PvP",
       ready: function() {
