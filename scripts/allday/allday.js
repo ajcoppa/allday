@@ -5285,6 +5285,7 @@ function _taggedTemplateLiteral10(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
 var csPrefs = {
+  instant_explicitlyExcludedBuffs: "318,2532",
   instant_freeFightPulls: 6451,
   instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
   instant_targetBaseMainStat: 170,
