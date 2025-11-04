@@ -88,6 +88,7 @@ const csPrefs = {
   instant_saveAprilingBandQuadTom: true,
   instant_saveAprilingBandSaxophone: true,
   instant_saveAprilingBandStaff: true,
+  instant_saveAugustScepter: true,
   instant_saveCinch: true,
   instant_saveMimicEggs: true,
   instant_saveMonsterHabitats: 3,
