@@ -5317,6 +5317,7 @@ var csPrefs = {
   instant_saveAprilingBandQuadTom: !0,
   instant_saveAprilingBandSaxophone: !0,
   instant_saveAprilingBandStaff: !0,
+  instant_saveAugustScepter: !0,
   instant_saveCinch: !0,
   instant_saveMimicEggs: !0,
   instant_saveMonsterHabitats: 3,
