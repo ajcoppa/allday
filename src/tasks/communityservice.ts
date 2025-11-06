@@ -21,6 +21,7 @@ import {
   restoreMp,
   use,
   useFamiliar,
+  useSkill,
   visitUrl,
 } from "kolmafia";
 import {
