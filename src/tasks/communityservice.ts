@@ -305,6 +305,15 @@ export function CSQuests(): Quest[] {
           limit: { tries: 30 },
         },
         {
+          name: "Offhand Remarkable",
+          ready: () => have($item`August Scepter`),
+          completed: () =>
+            !have($skill`Aug. 13th: Left/Off Hander's Day!`) ||
+            have($effect`Offhand Remarkable`) ||
+            get("_aug13Cast", false),
+          do: () => useSkill($skill`Aug. 13th: Left/Off Hander's Day!`),
+        },
+        {
           name: "Pajamas",
           completed: () => have($item`burning cape`),
           acquire: [
