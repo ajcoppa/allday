@@ -5572,7 +5572,7 @@ function CSQuests() {
         return !have($skill(_templateObject455 || (_templateObject455 = _taggedTemplateLiteral10(["Aug. 13th: Left/Off Hander's Day!"])))) || have($effect(_templateObject465 || (_templateObject465 = _taggedTemplateLiteral10(["Offhand Remarkable"])))) || get("_aug13Cast", !1);
       },
       do: function() {
-        return useSkill($skill(_templateObject475 || (_templateObject475 = _taggedTemplateLiteral10(["Aug. 13th: Left/Off Hander's Day!"]))));
+        return (0, import_kolmafia18.useSkill)($skill(_templateObject475 || (_templateObject475 = _taggedTemplateLiteral10(["Aug. 13th: Left/Off Hander's Day!"]))));
       }
     }, {
       name: "Pajamas",
