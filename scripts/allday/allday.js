@@ -5280,7 +5280,7 @@ function AftercoreQuest() {
 
 // src/tasks/communityservice.ts
 var import_kolmafia18 = require("kolmafia");
-var _templateObject80, _templateObject221, _templateObject320, _templateObject419, _templateObject514, _templateObject612, _templateObject710, _templateObject87, _templateObject98, _templateObject108, _templateObject118, _templateObject128, _templateObject137, _templateObject147, _templateObject157, _templateObject167, _templateObject177, _templateObject187, _templateObject197, _templateObject207, _templateObject2111, _templateObject227, _templateObject237, _templateObject247, _templateObject257, _templateObject267, _templateObject277, _templateObject287, _templateObject297, _templateObject307, _templateObject3111, _templateObject327, _templateObject337, _templateObject346, _templateObject355, _templateObject365, _templateObject375, _templateObject385, _templateObject395, _templateObject405, _templateObject4110, _templateObject425, _templateObject435, _templateObject445, _templateObject455, _templateObject465, _templateObject475, _templateObject485, _templateObject495;
+var _templateObject80, _templateObject221, _templateObject320, _templateObject419, _templateObject514, _templateObject612, _templateObject710, _templateObject87, _templateObject98, _templateObject108, _templateObject118, _templateObject128, _templateObject137, _templateObject147, _templateObject157, _templateObject167, _templateObject177, _templateObject187, _templateObject197, _templateObject207, _templateObject2111, _templateObject227, _templateObject237, _templateObject247, _templateObject257, _templateObject267, _templateObject277, _templateObject287, _templateObject297, _templateObject307, _templateObject3111, _templateObject327, _templateObject337, _templateObject346, _templateObject355, _templateObject365, _templateObject375, _templateObject385, _templateObject395, _templateObject405, _templateObject4110, _templateObject425, _templateObject435, _templateObject445, _templateObject455, _templateObject465, _templateObject475, _templateObject485, _templateObject495, _templateObject505, _templateObject515, _templateObject524, _templateObject534;
 function _taggedTemplateLiteral10(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
@@ -5564,23 +5564,34 @@ function CSQuests() {
         tries: 30
       }
     }, {
+      name: "Offhand Remarkable",
+      ready: function() {
+        return have($item(_templateObject445 || (_templateObject445 = _taggedTemplateLiteral10(["August Scepter"]))));
+      },
+      completed: function() {
+        return !have($skill(_templateObject455 || (_templateObject455 = _taggedTemplateLiteral10(["Aug. 13th: Left/Off Hander's Day!"])))) || have($effect(_templateObject465 || (_templateObject465 = _taggedTemplateLiteral10(["Offhand Remarkable"])))) || get("_aug13Cast", !1);
+      },
+      do: function() {
+        return useSkill($skill(_templateObject475 || (_templateObject475 = _taggedTemplateLiteral10(["Aug. 13th: Left/Off Hander's Day!"]))));
+      }
+    }, {
       name: "Pajamas",
       completed: function() {
-        return have($item(_templateObject445 || (_templateObject445 = _taggedTemplateLiteral10(["burning cape"]))));
+        return have($item(_templateObject485 || (_templateObject485 = _taggedTemplateLiteral10(["burning cape"]))));
       },
       acquire: [{
-        item: $item(_templateObject455 || (_templateObject455 = _taggedTemplateLiteral10(["clockwork maid"]))),
+        item: $item(_templateObject495 || (_templateObject495 = _taggedTemplateLiteral10(["clockwork maid"]))),
         price: 7 * get("valueOfAdventure"),
         optional: !0
       }, {
-        item: $item(_templateObject465 || (_templateObject465 = _taggedTemplateLiteral10(["burning cape"])))
+        item: $item(_templateObject505 || (_templateObject505 = _taggedTemplateLiteral10(["burning cape"])))
       }],
       do: function() {
-        have($item(_templateObject475 || (_templateObject475 = _taggedTemplateLiteral10(["clockwork maid"])))) && (0, import_kolmafia18.use)($item(_templateObject485 || (_templateObject485 = _taggedTemplateLiteral10(["clockwork maid"]))));
+        have($item(_templateObject515 || (_templateObject515 = _taggedTemplateLiteral10(["clockwork maid"])))) && (0, import_kolmafia18.use)($item(_templateObject524 || (_templateObject524 = _taggedTemplateLiteral10(["clockwork maid"])))), (0, import_kolmafia18.cliExecute)("modtrace adventures");
       },
       outfit: function() {
         return {
-          familiar: $familiars(_templateObject495 || (_templateObject495 = _taggedTemplateLiteral10(["Trick-or-Treating Tot, Left-Hand Man, Disembodied Hand, Grey Goose"]))).find(function(fam) {
+          familiar: $familiars(_templateObject534 || (_templateObject534 = _taggedTemplateLiteral10(["Trick-or-Treating Tot, Left-Hand Man, Disembodied Hand, Grey Goose"]))).find(function(fam) {
             return have(fam);
           }),
           modifier: "adventures".concat(args.pvp ? ", 0.3 fites" : "")
