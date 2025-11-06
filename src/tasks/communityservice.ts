@@ -324,6 +324,7 @@ export function CSQuests(): Quest[] {
             if (have($item`clockwork maid`)) {
               use($item`clockwork maid`);
             }
+            cliExecute("modtrace adventures");
           },
           outfit: () => ({
             familiar:
