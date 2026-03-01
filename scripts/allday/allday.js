@@ -5285,12 +5285,12 @@ function _taggedTemplateLiteral10(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
 var csPrefs = {
-  instant_explicitlyExcludedBuffs: "318,2532,2954",
-  instant_freeFightPulls: 6451,
+  instant_explicitlyExcludedBuffs: "2532",
+  instant_prePulls: "6451,4313,4305",
   instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
   instant_targetBaseMainStat: 170,
   instant_saveAbstraction: !0,
-  instant_saveAstralPilsners: 4,
+  instant_saveAstralPilsners: 0,
   instant_saveBeesKnees: !0,
   instant_saveBodySpradium: !0,
   instant_saveBorisBeer: !0,
@@ -5323,7 +5323,9 @@ var csPrefs = {
   instant_saveMonsterHabitats: 3,
   instant_saveStillsuit: !0,
   instant_skipHighHeels: !0,
-  instant_skipMeatButler: !0
+  instant_skipMeatButler: !0,
+  _instant_skipCalzoneOfLegend: !0,
+  _instant_skipPizzaOfLegend: !0
 };
 function CSQuests() {
   return [{
