@@ -243,6 +243,15 @@ export function CSQuests(): Quest[] {
           do: () => cliExecute("CONSUME NIGHTCAP"),
         },
         {
+          name: "Use Oscus's Soda",
+          ready: () => doneAdventuring(),
+          completed: () => !have($item`Oscus's neverending soda`) || !!get("oscusSodaUsed"),
+          do: () => {
+            useSkill($skill`Cannelloni Cocoon`);
+            use($item`Oscus's neverending soda`);
+          },
+        },
+        {
           name: "Barfing Drunk with Stooper",
           ready: () =>
             stooperDrunk() && have($familiar`Stooper`) && !have($item`Drunkula's wineglass`),
