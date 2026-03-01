@@ -53,16 +53,14 @@ import {
 } from "./utils";
 
 const csPrefs = {
-  // Ignore unnecessary leveling wishes:
-  // Effect 318: Fever from the flavor (9 cold res for mouthwash)
-  // Effect 2532: HGH-charged (+50% mus xp)
-  // Effect 2954: Cyber Resist x2000 (+5 allres for mouthwash)
-  instant_explicitlyExcludedBuffs: "318,2532,2954",
-  instant_freeFightPulls: 6451, // Great Wolf's Beastly Trousers
+  // Effect 2532: HGH-charged (+50% mus xp), unnecessary for leveling
+  instant_explicitlyExcludedBuffs: "2532",
+  // Great Wolf's Beastly Trousers, Stick-Knife of Loathing, Staff of Simmering Hatred
+  instant_prePulls: "6451,4313,4305",
   instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
   instant_targetBaseMainStat: 170,
   instant_saveAbstraction: true,
-  instant_saveAstralPilsners: 4,
+  instant_saveAstralPilsners: 0,
   instant_saveBeesKnees: true,
   instant_saveBodySpradium: true,
   instant_saveBorisBeer: true,
@@ -96,6 +94,8 @@ const csPrefs = {
   instant_saveStillsuit: true,
   instant_skipHighHeels: true,
   instant_skipMeatButler: true,
+  _instant_skipCalzoneOfLegend: true,
+  _instant_skipPizzaOfLegend: true,
 };
 
 export function CSQuests(): Quest[] {
