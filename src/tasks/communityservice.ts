@@ -34,6 +34,9 @@ import {
   $location,
   $skill,
   get,
+  getRemainingLiver,
+  getRemainingSpleen,
+  getRemainingStomach,
   getTodaysHolidayWanderers,
   have,
   Macro,
@@ -235,6 +238,27 @@ export function CSQuests(): Quest[] {
             useFamiliar($familiar`Stooper`);
             cliExecute("drink stillsuit distillate");
           },
+        },
+        {
+          name: "Fill Bonus Organs",
+          completed: () => get("_alldayConsumedBonusOrgans", false),
+          outfit: {
+            modifier: "stomach capacity, liver capacity, spleen capacity, -tie",
+          },
+          do: () => {
+            cliExecute("CONSUME ALL");
+            if (
+              getRemainingStomach() === 0 &&
+              getRemainingLiver() === 0 &&
+              getRemainingSpleen() === 0
+            ) {
+              set("_alldayConsumedBonusOrgans", true);
+            } else {
+              print("Failed to CONSUME for bonus organs!");
+              // Will fail automatically due to not setting the property, meaning the task won't complete
+            }
+          },
+          limit: { tries: 1 },
         },
         {
           name: "Nightcap",
