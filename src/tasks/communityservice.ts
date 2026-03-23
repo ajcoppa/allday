@@ -55,9 +55,21 @@ import {
   totallyDrunk,
 } from "./utils";
 
+const excludedBuffs = [
+  $effect`HGH-charged`, // (+50% mus xp), unnecessary for leveling
+  $effect`Ultra-Soft Steps`, // unnecessary for NC
+  $effect`Silent Running`, // unnecessary for NC
+  $effect`Wild and Westy!`, // unnecessary for NC
+  $effect`Shadow Waters`, // unnecessary for NC
+  $effect`Feeling Peaceful`, // unnnecessary for hot res
+];
+
 const csPrefs = {
-  // Effect 2532: HGH-charged (+50% mus xp), unnecessary for leveling
-  instant_explicitlyExcludedBuffs: "2532",
+  instant_musTestTurnLimit: 1,
+  instant_mystTestTurnLimit: 1,
+  instant_moxTestTurnLimit: 1,
+  instant_spellTestTurnLimit: 1, // force abort before spell test to BCZ and wish manually
+  instant_explicitlyExcludedBuffs: excludedBuffs.map((ef) => ef.id).join(","),
   // Great Wolf's Beastly Trousers, Stick-Knife of Loathing, Staff of Simmering Hatred
   instant_prePulls: "6451,4313,4305",
   instant_spellTestBusks: "1:220,2:350,3:160,4:180,5:400",
@@ -67,7 +79,7 @@ const csPrefs = {
   instant_saveBeesKnees: true,
   instant_saveBodySpradium: true,
   instant_saveBorisBeer: true,
-  instant_saveCatalogCredits: 2,
+  instant_saveCatalogCredits: 1,
   instant_saveEuclideanAngle: true,
   instant_saveHoneyBun: true,
   instant_savePerfectFreeze: true,
@@ -82,6 +94,7 @@ const csPrefs = {
   instant_saveWileyWheyBar: true,
   instant_skipCabernetSauvignon: true,
   instant_skipDistilledFortifiedWine: true,
+  instant_skipDuplicateBembershoots: true,
   instant_saveBackups: 10,
   instant_saveLocketFactoryWorker: true,
   instant_skipCyclopsEyedrops: true,
@@ -90,7 +103,7 @@ const csPrefs = {
   instant_saveAprilingBandQuadTom: true,
   instant_saveAprilingBandSaxophone: true,
   instant_saveAprilingBandStaff: true,
-  instant_saveAugustScepter: true,
+  instant_saveAugustScepter: false,
   instant_saveCinch: true,
   instant_saveMimicEggs: true,
   instant_saveMonsterHabitats: 3,
