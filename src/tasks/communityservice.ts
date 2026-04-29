@@ -10,6 +10,7 @@ import {
   hippyStoneBroken,
   inebrietyLimit,
   itemAmount,
+  monkeyPaw,
   myAdventures,
   myAscensions,
   myInebriety,
@@ -36,6 +37,7 @@ import {
   $item,
   $location,
   $skill,
+  CommunityService,
   get,
   getRemainingLiver,
   getRemainingSpleen,
@@ -117,6 +119,11 @@ const csPrefs = {
   _instant_skipPizzaOfLegend: true,
 };
 
+const spellDamageWishes = [
+  $effect`Witch Breaded`,
+  $effect`Pisces in the Skyces`,
+];
+
 export function CSQuests(): Quest[] {
   return [
     {
@@ -176,7 +183,85 @@ export function CSQuests(): Quest[] {
           },
         },
         {
-          name: "Run",
+          name: "Run until Myst",
+          completed: () => get("lastEmptiedStorage") === myAscensions(),
+          do: () => cliExecute(args.csscript),
+          clear: "all",
+          tracking: "Run",
+        },
+        {
+          name: "Up to 11 for Mysticality",
+          // Myst test abort happens after leveling is complete and turns are recorded in this pref
+          ready: () => get("_instant_levelingTurns", Number.MIN_SAFE_INTEGER) >= 0 &&
+            CommunityService.Mysticality.prediction > 1,
+          completed: () => !have($item`blood cubic zirconia`) ||
+            have($effect`Up to 11`) ||
+            CommunityService.Mysticality.isDone(),
+          do: () => {
+            useSkill($skill`BCZ: Dial it up to 11`);
+          },
+          limit: { tries: 1 },
+        },
+        {
+          name: "Run until Mox",
+          completed: () => get("lastEmptiedStorage") === myAscensions(),
+          do: () => cliExecute(args.csscript),
+          clear: "all",
+          tracking: "Run",
+        },
+        {
+          name: "Pocket Maze for Moxie",
+          ready: () => get("_instant_levelingTurns", Number.MIN_SAFE_INTEGER) >= 0 &&
+            CommunityService.Moxie.prediction > 1 &&
+            CommunityService.Mysticality.isDone(),
+          completed: () => !have($item`pocket maze`) ||
+            CommunityService.Moxie.isDone(),
+          do: () => {
+            use($item`pocket maze`);
+          },
+          limit: { tries: 1 },
+        },
+        {
+          name: "Run until Spell Damage",
+          completed: () => get("lastEmptiedStorage") === myAscensions(),
+          do: () => cliExecute(args.csscript),
+          clear: "all",
+          tracking: "Run",
+        },
+        {
+          name: "BCZ for Spell Damage",
+          ready: () => CommunityService.WeaponDamage.isDone(),
+          completed: () => !have($item`blood cubic zirconia`) ||
+            have($effect`Up to 11`) ||
+            CommunityService.SpellDamage.isDone(),
+          do: () => {
+            useSkill($skill`BCZ: Dial it up to 11`);
+          },
+          limit: { tries: 1 },
+        },
+        {
+          name: "Spell Damage Wishes",
+          ready: () => CommunityService.WeaponDamage.isDone(),
+          completed: () => CommunityService.SpellDamage.isDone() ||
+            spellDamageWishes.every((ef) => have(ef)) ||
+            !have($item`cursed monkey paw`) ||
+            get("_monkeyPawWishesUsed") >= 5,
+          do: () => {
+            spellDamageWishes.forEach((ef) => monkeyPaw(ef));
+          },
+          limit: { tries: 1 },
+        },
+        {
+          name: "Remove Spell Damage Turn Limit",
+          ready: () => CommunityService.WeaponDamage.isDone() &&
+            spellDamageWishes.every((ef) => have(ef)),
+          completed: () => get("instant_spellTestTurnLimit", undefined) === undefined,
+          do: () => {
+            set("instant_spellTestTurnLimit", "");
+          },
+        },
+        {
+          name: "Finish CS",
           completed: () => get("lastEmptiedStorage") === myAscensions(),
           do: () => cliExecute(args.csscript),
           clear: "all",
