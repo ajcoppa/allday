@@ -2473,10 +2473,10 @@ json5@^2.1.2, json5@^2.2.1:
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.1.tgz"
   integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
 
-kolmafia@latest:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/kolmafia/-/kolmafia-4.0.1.tgz"
-  integrity sha512-qH/A3ZwSqVADzLfNmFsNe0vyfnuSi/Ql6ZaWaJ6y6eMasBbcieTL0w3d0bSvbQj9Oe00MsmeZeJNOlV863rxNA==
+kolmafia@^5.28988.0:
+  version "5.28988.0"
+  resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-5.28988.0.tgz#1c70b4b0f6fa3f066325089b377fd0afb64e3854"
+  integrity sha512-hbylEKJU6UGOcJ8JSaDm+AF6e/R2FGy1ZmCs2ZU5Lhw1PphaQkcFD5HHv2R7up/sa3143MkpUTyx8GeGGkykqw==
 
 levn@^0.4.1:
   version "0.4.1"
