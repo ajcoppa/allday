@@ -184,7 +184,7 @@ export function CSQuests(): Quest[] {
         },
         {
           name: "Run until Myst",
-          completed: () => get("lastEmptiedStorage") === myAscensions(),
+          completed: () => get("_instant_levelingTurns", Number.MIN_SAFE_INTEGER) >= 0,
           do: () => cliExecute(args.csscript),
           clear: "all",
           tracking: "Run",
@@ -204,7 +204,11 @@ export function CSQuests(): Quest[] {
         },
         {
           name: "Run until Mox",
-          completed: () => get("lastEmptiedStorage") === myAscensions(),
+          completed: () => CommunityService.Moxie.isDone() ||
+            have($effect`Amazing`) ||(get("_instant_levelingTurns", Number.MIN_SAFE_INTEGER) >= 0 &&
+            CommunityService.Moxie.prediction > 1 &&
+            CommunityService.Mysticality.isDone() &&
+            !CommunityService.Moxie.isDone()),
           do: () => cliExecute(args.csscript),
           clear: "all",
           tracking: "Run",
@@ -223,7 +227,7 @@ export function CSQuests(): Quest[] {
         },
         {
           name: "Run until Spell Damage",
-          completed: () => get("lastEmptiedStorage") === myAscensions(),
+          completed: () => CommunityService.WeaponDamage.isDone(),
           do: () => cliExecute(args.csscript),
           clear: "all",
           tracking: "Run",
@@ -255,7 +259,7 @@ export function CSQuests(): Quest[] {
           name: "Remove Spell Damage Turn Limit",
           ready: () => CommunityService.WeaponDamage.isDone() &&
             spellDamageWishes.every((ef) => have(ef)),
-          completed: () => get("instant_spellTestTurnLimit", undefined) === undefined,
+          completed: () => get("instant_spellTestTurnLimit", 1000) === 1000,
           do: () => {
             set("instant_spellTestTurnLimit", "");
           },
